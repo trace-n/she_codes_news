@@ -6,12 +6,16 @@
     {% endblock %}
 
     {% block content %}
+    <br>
+    <a href="{% url 'news:newStory' %}">Write New Story</a>
     <h2>Latest News</h2>
 
     <div id="latest-stories">
         {% if latest_stories %}
+            <!-- <p>Test output variable latest_stories{{ latest_stories }}</p> -->
             {% for story in latest_stories %}
-                <p>{{ story.title }}</p>
+                <!-- <p>{{ story.title }}</p> 
+                <p>{{ story.pub_date }}</p> -->
                 {% include "./storyCard.html" with story=story position=forloop.counter %}
             {% endfor %}
         {% else %}
@@ -22,7 +26,7 @@
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}
-                <p>{{ story.title }}</p>
+                <!-- <p>{{ story.title }}</p> -->
                 {% include "./storyCard.html" with story=story %}
             {% endfor %}
         {% else %}
