@@ -15,9 +15,11 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
-        print(NewsStory.objects.all())
+        # print(context)
+        # print(NewsStory.objects.all())
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
+        context['story_categories'] = NewsStory.objects.filter(category__icontains="Science")
+        # print(context['story_categories'])
         return context
 
 class StoryView(generic.DetailView):

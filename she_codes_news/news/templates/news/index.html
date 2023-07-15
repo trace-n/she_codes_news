@@ -7,7 +7,9 @@
 
     {% block content %}
     <br>
-    <a href="{% url 'news:newStory' %}">Write New Story</a>
+    <div id="news-categories">
+    <a href="{% url 'news:newStory' %}">World</a> | <a href="{% url 'news:newStory' %}">Science</a>       
+    </div>
     <h2>Latest News</h2>
 
     <div id="latest-stories">
@@ -33,4 +35,6 @@
             <p>No stories are available.</p>
         {% endif %}
     </div>
+
+    <p>Test output variable latest_stories{{ story_categories }}</p>
 {% endblock %}
