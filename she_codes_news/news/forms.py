@@ -6,7 +6,8 @@ class StoryForm(ModelForm):
     class Meta:
         model = NewsStory
 
-        fields = ['title', 'author', 'category', 'image_url', 'content']
+        # fields = ['title', 'author', 'category', 'image_url', 'content']
+        fields = ['title', 'category', 'image_url', 'content']
         # widget = forms.Select(choices=CATEGORY_CHOICES),
         
         # fields = ['title', 'author', 'pub_date', 'content']
