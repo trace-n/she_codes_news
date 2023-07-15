@@ -2,6 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+# from django.views.generic.edit import DeleteView
 
 
 class IndexView(generic.ListView):
@@ -14,6 +15,8 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        print(context)
+        print(NewsStory.objects.all())
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         return context
 
@@ -31,3 +34,21 @@ class AddStoryView(generic.CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+class EditStoryView(generic.UpdateView):
+    model = NewsStory
+    form_class = StoryForm
+    context_object_name = 'storyform'
+    template_name = 'news/editStory.html'
+    success_url = reverse_lazy('news:index')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)    
+    
+class DeleteStoryView(generic.DeleteView):
+    model = NewsStory    
+    # form_class = StoryForm
+    context_object_name = 'storyform'
+    template_name = 'news/deleteStory.html'
+    success_url = reverse_lazy('news:index')

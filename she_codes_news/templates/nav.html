@@ -7,6 +7,8 @@
         <a href="#">{{ user.username }}</a>
         <a href="{% url 'logout' %}">Logout</a>
         <a href="{% url 'news:newStory' %}">Write New Story</a>        
+        {% comment %} <a href="{% url 'news:editStory' %}">Edit Story</a>   
+        <a href="{% url 'news:deleteStory' %}">Delete Story</a>                    {% endcomment %}
     {% else %}
         <a href="{% url 'login' %}">Login</a>
     {% endif %}

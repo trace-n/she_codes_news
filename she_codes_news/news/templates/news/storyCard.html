@@ -1,12 +1,21 @@
+{% load static %}
+
+
 <div class="story-card" id="story-card-{{ position }}">
     <a href="{% url 'news:story' story.id %}">
-        {% if position < 5 %}
-            <img src="../static/news/images/placeholder-{{ position }}.jpg">
+        {% comment %} {% if position < 5 %} {% endcomment %}
+        {% if story.image_url %}
+        {% comment %} <img src="../static/news/images/placeholder-{{ position }}.jpg"> {% endcomment %}
+            <img src="{% static '/news/images/' %}{{ story.image_url }}">        
         {% else %}
             <img src="https://picsum.photos/600">
         {% endif %}
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
+            {% if request.user == story.author %}
+            <a href="{% url 'news:editStory' story.id %}">Edit</a>
+            <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
+            {% endif %}            
             <h4>{{ story.author }}</h4>
             <h4>{{ story.pub_date }}</h4>
         </div>

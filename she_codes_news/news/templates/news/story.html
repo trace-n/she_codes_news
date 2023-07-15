@@ -10,8 +10,16 @@
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
     <h4>{{ story.author }}</h4>
+    <h4>{{ story.author }}</h4>
+    {% if request.user == story.author %}
+    <a href="{% url 'news:editStory' story.id %}">Edit</a>
+    <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
+    {% endif %}          
+    <h5>Created: {{ story.pub_date }}</h4>
+    <h5>Last updated:{{ story.change_date }}</h4>            
     <div id="story-content">
-        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+        {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
+        <img src="{% static '/news/images/' %}{{ story.image_url }}">
         {{ story.content|linebreaks }}
     </div>
 </div>
