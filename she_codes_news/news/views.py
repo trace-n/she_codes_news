@@ -2,8 +2,10 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+from django.db.models import Q
 # from django.views.generic.edit import DeleteView
 
+# category_choices = CATEGORY_CHOICES
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -18,12 +20,22 @@ class IndexView(generic.ListView):
         # print(context)
         # print(NewsStory.objects.all())
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
-        context['story_categories'] = NewsStory.objects.filter(category__icontains="Science")
-        # add search by author name
-        # context['story_search'] = NewsStory.objects.filter(author.last_name__icontains="author name")
-        # print(context['story_categories'])
+        # context['story_categories'] = NewsStory.objects.filter(category__icontains="Science")
+        # context['categories'] = NewsStory.objects.filter(category="Science")
         return context
     
+class CategoryView(generic.ListView):
+    model = NewsStory
+    template_name = 'news/science.html'  
+    context_object_name = 'story_categories'
+
+    def get_queryset(self, category):
+        '''Return all news stories.'''
+        # print(NewsStory.objects.get().category)
+        # print(NewsStory.objects.filter(category=NewsStory.get().category))
+        print(NewsStory.objects.filter(category=category))
+        return NewsStory.objects.filter(category=category)
+
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
@@ -57,3 +69,16 @@ class DeleteStoryView(generic.DeleteView):
     template_name = 'news/deleteStory.html'
     success_url = reverse_lazy('news:index')
 
+class SearchView(generic.TemplateView):
+    template_name = 'news/search.html'
+
+class SearchResultsView(generic.ListView):
+    model = NewsStory
+    template_name = 'news/searchResults.html'
+    context_object_name = 'search_stories'    
+
+    def get_queryset(self):
+        '''Return news stories filtered by author first or last name or category'''
+        query = self.request.GET.get("q")
+        return NewsStory.objects.filter(Q(author__last_name__icontains=query) | Q(author__first_name__icontains=query) 
+                                        | Q(category=query))

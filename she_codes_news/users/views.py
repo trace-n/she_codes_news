@@ -43,5 +43,5 @@ class FavouriteView(generic.ListView):
     model = CustomUser
     template_name = 'users/favourites.html'
     context_object_name = 'favourites'
-    # new = NewsStory.objects.filter(favourites=self.request.user)
+    # new = NewsStory.favourites.filter(id=request.user)
     # return render(request,'favourites/html', { 'new': new })

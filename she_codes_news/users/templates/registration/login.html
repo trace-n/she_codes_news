@@ -9,4 +9,6 @@
     {{ form.as_p }}
     <button type="submit">Login</button>
 </form>
+
+Don't have an account? <a href="{% url 'users:createAccount' %}">Sign up</a>.
 {% endblock %}

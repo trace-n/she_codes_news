@@ -13,9 +13,7 @@
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
             {% if request.user.is_authenticated %}                
-                <a href="{% url 'users:favAdd' story.id %}">Add to favourites</a>
-            {% else %}
-                <a href="{% url 'users:createAccount' %}">Add to favourites</a>                
+                <a href="{% url 'users:favAdd' story.id %}">Add to favourites</a>            
             {% endif %}
             {% if request.user == story.author %}
             <a href="{% url 'news:editStory' story.id %}">

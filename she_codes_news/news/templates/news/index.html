@@ -8,7 +8,13 @@
     {% block content %}
     <br>
     <div id="news-categories">
-    <a href="{% url 'news:newStory' %}">World</a> | <a href="{% url 'news:newStory' %}">Science</a>       
+    {% comment %} <a href="{% url 'news:category' category='Science' %}">World</a> | <a href="science.html">Science</a>        {% endcomment %}
+    {% comment %} <a href="{% url 'news:searchresults' q='Science' %}">World</a>  {% endcomment %}
+    | <a href="science.html">Science</a> 
+    {% comment %} {{ category_choices.get_user_choices_display() }}
+    {% for category in category_choices %}
+        <p>{{ category}} </p>
+    {% endfor %} {% endcomment %}
     </div>
     <h2>Latest News</h2>
 
@@ -26,7 +32,7 @@
     </div>
 
     <div id="all-stories">
-        {% if latest_stories %}
+        {% if all_stories %}
             {% for story in all_stories %}
                 <!-- <p>{{ story.title }}</p> -->
                 {% include "./storyCard.html" with story=story %}

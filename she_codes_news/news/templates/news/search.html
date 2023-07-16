@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %} 
+<br>
+<h2>Search News</h2>
+<h3>Search Articles by author or category</h3>
+
+<form action="{% url 'news:searchresults' %}" method="get">
+    <input name="q" type="text" placeholder="Search Author or Category...">
+</form>
+
+{% endblock %}

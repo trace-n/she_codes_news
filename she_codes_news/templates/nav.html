@@ -3,6 +3,7 @@
     {% comment %} <a href="#">username</a> {% endcomment %}
     {% comment %} <a href="#">Logout</a>
     <a href="#">Login</a> {% endcomment %}
+    <a href="{% url 'news:search' %}">Search</a>
     {% if request.user.is_authenticated %}
         <a href="{% url 'users:changeAccount' %}">{{ user.username }}</a>
         <a href="{% url 'logout' %}">Logout</a>

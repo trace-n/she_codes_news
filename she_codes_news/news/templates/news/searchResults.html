@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<br>
+<h2>Search Results</h2>
+
+<div id="all-stories">
+    {% if search_stories %}
+        {% for story in search_stories %}
+            <!-- <p>{{ story.title }}</p> -->
+            {% include "./storyCard.html" with story=story %}
+        {% endfor %}
+    {% else %}
+        <p>No search results are available.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
