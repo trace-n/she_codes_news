@@ -27,4 +27,15 @@ class NewsStory(models.Model):
     # category = models.ForeignKey(NewsCategory, on_delete=models.CASCADE)
     image_url = models.CharField(max_length=200, default = 'placeholder-3.jpg')
     content = models.TextField()
+    favourites = models.ManyToManyField(get_user_model(), related_name='favourite', default=None, blank=True)
+
+# class FavStory(models.Model):
+#     author = models.ForeignKey(
+#         get_user_model(),
+#         on_delete=models.CASCADE
+#     )
+#     story = models.ForeignKey(
+#         NewsStory,
+#         on_delete=models.CASCADE
+#     )
 

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div id="fav-stories">
+    <br>
+<h2>Favourite News</h2>
+<h3>View or remove your favourite news items you have added</h3>
+    {% if fav_stories %}
+        {% comment %} {% for story in fav_stories %} {% endcomment %}
+        {% for story in all_stories %}        
+            <!-- <p>{{ story.title }}</p> -->
+            {% include "./storyCard.html" with story=story %}
+            <p>Test output variable latest_stories{{ story }}</p>
+            <a href="{% url 'users:favAdd' NewsStory.id %}">Remove</a>
+        {% endfor %}
+    {% else %}
+        <h4>No stories are available.</h4>
+    {% endif %} 
+</div>
+
+
+{% endblock %}

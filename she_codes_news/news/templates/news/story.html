@@ -9,14 +9,19 @@
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
-    <h4>{{ story.author }}</h4>
+    {% comment %} <h4>{{ story.author }}</h4> {% endcomment %}
+    <h4>By {{ story.author.first_name }} {{ story.author.last_name }}</h4>
+    {% if request.user.is_authenticated %}    
+        <a href="{% url 'users:favAdd' story.id %}">Add to favourites</a>
+    {% else %}
+        <a href="{% url 'users:createAccount' %}">Add to favourites</a>
+    {% endif %}
     {% if request.user == story.author %}
     <a href="{% url 'news:editStory' story.id %}">Edit</a>
     <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
     {% endif %}          
-    <h5>Created: {{ story.pub_date }}</h4>
-    <h5>Last updated:{{ story.change_date }}</h4>            
+    <h5>Posted: {{ story.pub_date }}</h4>
+    <h5>Updated:{{ story.change_date }}</h4>            
     <div id="story-content">
         {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
         <img src="{% static '/news/images/' %}{{ story.image_url }}">

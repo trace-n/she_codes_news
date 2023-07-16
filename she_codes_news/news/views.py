@@ -19,9 +19,11 @@ class IndexView(generic.ListView):
         # print(NewsStory.objects.all())
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         context['story_categories'] = NewsStory.objects.filter(category__icontains="Science")
+        # add search by author name
+        # context['story_search'] = NewsStory.objects.filter(author.last_name__icontains="author name")
         # print(context['story_categories'])
         return context
-
+    
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
@@ -54,3 +56,4 @@ class DeleteStoryView(generic.DeleteView):
     context_object_name = 'storyform'
     template_name = 'news/deleteStory.html'
     success_url = reverse_lazy('news:index')
+
