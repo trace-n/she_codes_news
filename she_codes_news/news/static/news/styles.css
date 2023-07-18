@@ -1,7 +1,11 @@
+/* Base HTML Styles */
+
 .story-card {
     margin: 2px;
     border: 1px solid #000;
+    /* border: none; */
     padding: 5px;
+    
 }
 
 .story-card img {
@@ -16,7 +20,7 @@
     grid-template-rows: 1fr 1fr 1fr;
     gap: 1px 1px;
     grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
-    max-height: 500px;
+    max-height: 500px;     
 }
 
 #story-card-1 {
@@ -67,7 +71,7 @@
 #all-stories {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between;   
 }
 
 #all-stories .story-card {
@@ -83,6 +87,14 @@
     float: right;
     margin: 0 0 10px 10px;
     width: 50%;
+}
+
+
+#all-content {
+    display: block;
+    border: 1px solid #000;
+    width: 70%;
+    margin: auto;
 }
 
 /* .mini_img {

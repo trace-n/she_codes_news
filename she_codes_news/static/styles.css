@@ -1,14 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+html {
+	box-sizing: border-box;
+	font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Roboto', Arial, sans-serif;  
+	scroll-behavior: smooth;
+}
 
 body {
-    background-color: rgb(240, 239, 239);
+    /* background-color: rgb(240, 239, 239); */
+    font-family: 'Roboto', Arial, sans-serif;  
 }
 
 header {
-    display: flex;
+    display: flex; */
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #000;
+
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "left mid right";
+    align-items: center; */
 }
 
 /* img {
@@ -16,31 +32,62 @@ header {
 } */
 
 h1 {
-    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'Inter', Arial, sans-serif;  
     text-decoration: none;
     font-size: 4rem;
     margin: 0;
+    text-align: center;
 }
 
 h2 {
-   font-family: 'Montserrat Subrayada', sans-serif; 
+   font-family: 'Inter', Arial, sans-serif;  
 }
 
 h3 {
     font-size: 2rem;
     margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;  
 }
 
 #header-text {
     flex-basis: 80%;
     display: flex;
+    font-family: 'Roboto', Arial, sans-serif;  
 }
 
-nav {
+/* nav {
+    font-family: 'Inter', Arial, sans-serif;      
     flex-basis: 20%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    border: solid;
+} */
+
+.desktop-nav {
+    display:block;     
+}
+
+
+.desktop-nav a:hover {
+    list-style: none;
+    color: red;
+}
+
+.nav-icons {
+    width: 20px;
+    height: 20px;
+}
+
+.login {
+    border-radius: 4px;
+}
+
+.register {
+    margin-right: 8px;
+    background-color: #1691db;
+    color: #fff;
+    border: 1px solid #1691db;
 }
 
 a {
@@ -50,5 +97,5 @@ a {
 }
 
 a, p {
-    font-family: monospace;
+    font-family: 'Inter', Arial, sans-serif;  
 }

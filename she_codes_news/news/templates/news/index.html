@@ -17,30 +17,31 @@
     {% endfor %} {% endcomment %}
     </div>
     <h2>Latest News</h2>
+    <div id="all-content">
+        <div id="latest-stories">
+            {% if latest_stories %}
+                <!-- <p>Test output variable latest_stories{{ latest_stories }}</p> -->
+                {% for story in latest_stories %}
+                    <!-- <p>{{ story.title }}</p> 
+                    <p>{{ story.pub_date }}</p> -->
+                    {% include "./storyCard.html" with story=story position=forloop.counter %}
+                {% endfor %}
+            {% else %}
+                <p>No stories are available.</p>
+            {% endif %}
+        </div>
 
-    <div id="latest-stories">
-        {% if latest_stories %}
-            <!-- <p>Test output variable latest_stories{{ latest_stories }}</p> -->
-            {% for story in latest_stories %}
-                <!-- <p>{{ story.title }}</p> 
-                <p>{{ story.pub_date }}</p> -->
-                {% include "./storyCard.html" with story=story position=forloop.counter %}
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
+        <div id="all-stories">
+            {% if all_stories %}
+                {% for story in all_stories %}
+                    <!-- <p>{{ story.title }}</p> -->
+                    {% include "./storyCard.html" with story=story %}
+                {% endfor %}
+            {% else %}
+                <p>No stories are available.</p>
+            {% endif %}
+        </div>
+
+        <p>Test output variable latest_stories{{ story_categories }}</p>
     </div>
-
-    <div id="all-stories">
-        {% if all_stories %}
-            {% for story in all_stories %}
-                <!-- <p>{{ story.title }}</p> -->
-                {% include "./storyCard.html" with story=story %}
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
-    </div>
-
-    <p>Test output variable latest_stories{{ story_categories }}</p>
 {% endblock %}
