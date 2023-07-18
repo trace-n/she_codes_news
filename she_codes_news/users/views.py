@@ -9,6 +9,12 @@ from .models import CustomUser
 from news.models import NewsStory
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
+class DisplayAccountView(generic.ListView):
+    model = CustomUser
+    success_url = reverse_lazy('news:index')
+    template_name = 'users/viewAccount.html'
+
+
 class CreateAccountView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')

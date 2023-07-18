@@ -1,20 +1,20 @@
     {% extends "base.html" %}
     {% load static %}
     
-    {% block stylesheets %}
+    
+    {% comment %} {% block stylesheets %}
         <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
-    {% endblock %}
+    {% endblock %}   {% endcomment %}
+    
 
     {% block content %}
     <br>
     <div id="news-categories">
-    {% comment %} <a href="{% url 'news:category' category='Science' %}">World</a> | <a href="science.html">Science</a>        {% endcomment %}
-    {% comment %} <a href="{% url 'news:searchresults' q='Science' %}">World</a>  {% endcomment %}
-    | <a href="science.html">Science</a> 
-    {% comment %} {{ category_choices.get_user_choices_display() }}
-    {% for category in category_choices %}
-        <p>{{ category}} </p>
-    {% endfor %} {% endcomment %}
+        <h4> |
+        {% for category, value in category_choices %}
+          <a href="{% url 'news:searchresults' %}?category={{category}}">{{ category }}</a> |
+        {% endfor %}
+        </h4>
     </div>
     <h2>Latest News</h2>
     <div id="all-content">

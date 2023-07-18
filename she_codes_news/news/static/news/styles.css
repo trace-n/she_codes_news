@@ -97,6 +97,22 @@
     margin: auto;
 }
 
+.story-card svg {
+    width: 20px;
+    height: 20px;
+}
+
+#story-wrapper svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* .mini_img {
     width: 2px;
     height: 2px;

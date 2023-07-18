@@ -1,0 +1,21 @@
+<!-- users/templates/users/createAccount.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>View Account</h2>
+    <h3>{{ user.username }}</h3>
+    <p>Email: {{ user.email }}</p>
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Last Name: {{ user.last_name }}</p>
+    {% comment %} <form method="post">
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <button type="submit">Change Account</button>
+    </form> {% endcomment %}
+
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'users:changeAccount' %}">Edit</a>    
+    {% endif %}
+
+{% endblock %}

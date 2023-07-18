@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block stylesheets %}
+{% comment %} {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
-{% endblock %}
+{% endblock %} {% endcomment %}
 
 {% block content %} 
 <br>
@@ -12,6 +12,9 @@
 
 <form action="{% url 'news:searchresults' %}" method="get">
     <input name="q" type="text" placeholder="Search Author or Category...">
+    {% comment %} <input name="category" type="text" placeholder="Search Author or Category...">
+    <input name="author" type="text" placeholder="Search Author or Category...">
+    <input name="category" type="text" placeholder="Search Author or Category..."> {% endcomment %}
 </form>
 
 {% endblock %}

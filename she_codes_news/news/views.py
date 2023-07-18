@@ -5,8 +5,6 @@ from .forms import StoryForm
 from django.db.models import Q
 # from django.views.generic.edit import DeleteView
 
-# category_choices = CATEGORY_CHOICES
-
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
     context_object_name = "all_stories"
@@ -20,6 +18,7 @@ class IndexView(generic.ListView):
         # print(context)
         # print(NewsStory.objects.all())
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
+        context['category_choices'] = NewsStory.CATEGORY_CHOICES
         # context['story_categories'] = NewsStory.objects.filter(category__icontains="Science")
         # context['categories'] = NewsStory.objects.filter(category="Science")
         return context
@@ -75,10 +74,24 @@ class SearchView(generic.TemplateView):
 class SearchResultsView(generic.ListView):
     model = NewsStory
     template_name = 'news/searchResults.html'
-    context_object_name = 'search_stories'    
+    context_object_name = 'search_stories' 
+    success_url = reverse_lazy('news:index')       
 
     def get_queryset(self):
         '''Return news stories filtered by author first or last name or category'''
-        query = self.request.GET.get("q")
-        return NewsStory.objects.filter(Q(author__last_name__icontains=query) | Q(author__first_name__icontains=query) 
-                                        | Q(category=query))
+        query_author = self.request.GET.get("author")                
+        query_category = self.request.GET.get("category")
+        print(query_author, query_category)
+        if query_author is None or query_author == "":
+            result_set = NewsStory.objects.filter(Q(category__icontains=query_category))
+        # query = self.request.GET.get("q")
+        elif query_category is None or query_category == "": 
+            result_set = NewsStory.objects.filter(Q(author__last_name__icontains=query_author) | Q(author__first_name__icontains=query_author))
+        else:                                      
+            result_set = NewsStory.objects.filter((Q(author__last_name__icontains=query_author) | Q(author__first_name__icontains=query_author)) 
+                                        & Q(category__icontains=query_category))
+
+        
+        # return NewsStory.objects.filter(Q(author__last_name__icontains=query_author) | Q(author__first_name__icontains=query_author) 
+                                        # | Q(category__icontains=query_category))
+        return result_set
