@@ -2,12 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
+:root {
+    --hover-blue: #1691db;
+	--black: #111111;  
+    --white: #ffffff;  
+}
+
+
 html {
 	box-sizing: border-box;
 	font-size: 16px;
     line-height: 1.5;
     font-family: 'Roboto', Arial, sans-serif;  
 	scroll-behavior: smooth;
+    color: var(--black);
 }
 
 body {
@@ -19,7 +27,7 @@ header {
     display: flex; */
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid var(--black); */
 
     /* display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -41,6 +49,7 @@ h1 {
 
 h2 {
    font-family: 'Inter', Arial, sans-serif;  
+   text-align: center;
 }
 
 h3 {
@@ -50,10 +59,14 @@ h3 {
 }
 
 #header-text {
-    flex-basis: 80%;
+    flex-basis: 100%;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Roboto', Arial, sans-serif;  
 }
+
 
 /* nav {
     font-family: 'Inter', Arial, sans-serif;      
@@ -65,18 +78,41 @@ h3 {
 } */
 
 .desktop-nav {
-    display:block;     
+    display:flex;     
+    /* border-style: solid;     */
+    width: 100%;
 }
-
 
 .desktop-nav a:hover {
     list-style: none;
-    color: red;
+    /* color:  var(--hover-blue); */
 }
 
-.nav-icons {
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    content: "\f002";
+    /* border-style: solid; */
+}
+
+svg {
     width: 20px;
     height: 20px;
+}
+
+.nav-top-icons {
+    list-style: none; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+    font-size: 14px;
+    /* border-style: solid;       */
+
 }
 
 .login {
@@ -85,17 +121,288 @@ h3 {
 
 .register {
     margin-right: 8px;
-    background-color: #1691db;
-    color: #fff;
-    border: 1px solid #1691db;
+    /* background-color: #1691db; */
+    /* color: var(--hover-blue); */
+    border: 1px solid var(--hover-blue);
+    border-radius: 4px;
+    width: 80px;
+    text-align: center;
+}
+
+.register a:hover {
+    background-color: var(--hover-blue); 
+    color: var(--white);
 }
 
 a {
     margin: 2px;
     text-decoration: none;
-    color: #000;
+    color:  var(--black);
 }
 
-a, p {
-    font-family: 'Inter', Arial, sans-serif;  
+a:hover {
+    color:  var(--hover-blue);
 }
+
+
+
+a, p {
+    font-family: 'Roboto', Arial, sans-serif;  
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: wrap;
+    width: 100%;
+    margin: auto;
+    border-top: 1px solid var(--black);
+    /* border-bottom: 1px solid var(--black); */
+    /* border-style: solid; */
+}
+
+ul {
+    list-style: none; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.category-list {
+    width:70%;
+    border-style: solid;
+    justify-content: center;
+}
+
+.contact-link {
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+
+/* .contact-icons {
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+} */
+
+.form-simple {
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    margin: auto;
+    /* text-align: center; */
+    width: 60%;
+    border: solid;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-style: solid;
+}
+
+/* .labels .label-values {
+    justify-content:space-around;
+    align-items: center;
+    border-style: solid;
+} */
+
+#welcome {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+}
+
+#story-add {
+    background-color: var(--hover-blue);
+    border-radius: 4px;
+}
+
+#name {
+    width: 50%;
+    /* border-style: solid; */
+}
+
+.button-simple {
+    margin-right: 8px;
+    background-color: var(--hover-blue);
+    /* background-color: rgb(22, 145, 219, 0.6); */
+    color: var(--white);
+    border: 1px solid var(--hover-blue);
+    border-radius: 4px;
+    width: 125px;
+    height: 30px;
+    text-align: center;
+    /* font-size: 12px; */
+    /* align-self: center; */
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    /* border: 1px solid white; */
+    transition: all 1s ease;
+}
+
+#story-add a:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: var(--black);
+}
+
+.category-list {
+    margin: auto;
+    justify-content: space-around;
+    text-align: left;
+    height:30px;
+    align-items: center;
+}
+
+.category-list li a:hover {
+    background-color: var(--hover-blue);
+}
+
+#headline {
+    height: 20vh;
+    background-image: url('/static/news/images/header_image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y:60%; 
+    /* background-color: #111111; */
+    /* opacity: 80%; */
+    /* width: 100%; */
+}
+
+
+/* this is from news/styles.css as issues with 2 stylesheets being called */
+
+
+/* Base HTML Styles */
+
+.story-card {
+    margin: 2px;
+    /* border: 1px solid #000;
+    border-radius: 4px; */
+    /* border: none; */
+    padding: 5px;
+    
+}
+
+.story-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+#latest-stories {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
+    max-height: 500px;     
+}
+
+#story-card-1 {
+    grid-area: left-1;
+}
+
+#story-card-2 {
+    grid-area: right-1;
+}
+
+#story-card-3 {
+    grid-area: right-2;
+}
+
+#story-card-4 {
+    grid-area: right-3;
+}
+
+#story-card-2 a,
+#story-card-3 a,
+#story-card-4 a {
+    display: flex;
+    max-height: 120px;
+    width: 100%;
+    height: 100%;
+}
+
+#story-card-2 .story-card-text h3,
+#story-card-3 .story-card-text h3,
+#story-card-4 .story-card-text h3 {
+    font-size: 16px;
+}
+
+#story-card-2 .story-card-text h4,
+#story-card-3 .story-card-text h4,
+#story-card-4 .story-card-text h4 {
+    font-size: 12px;
+}
+
+#story-card-2 img,
+#story-card-3 img,
+#story-card-4 img {
+    width: 33%;
+    height: 100%;
+    margin-right: 5px;
+}
+
+#all-stories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;   
+}
+
+#all-stories .story-card {
+    flex-basis: 32%;
+    flex-grow: 1;
+}
+
+#story-content {
+    text-align: justify;
+}
+
+#story-content img {
+    float: right;
+    margin: 0 0 10px 10px;
+    width: 50%;
+}
+
+
+#all-content {
+    display: block;
+    border: 1px solid #000;
+    width: 70%;
+    margin: auto;
+}
+
+/* .story-card svg {
+    width: 20px;
+    height: 20px;
+}
+
+#story-wrapper svg {
+    width: 20px;
+    height: 20px;
+} */
+
+
+/* svg {
+    width: 20px;
+    height: 20px;
+} */
+
+/* .mini_img {
+    width: 2px;
+    height: 2px;
+}
+
+.story-card-text svg {
+    width: 1px;
+    height: 1px;
+} */

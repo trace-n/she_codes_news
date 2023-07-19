@@ -1,9 +1,10 @@
 <!-- news/templates/news/story.html -->
 {% extends "base.html" %}
 {% load static %}
-{% block stylesheets %}
+
+{% comment %} {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
-{% endblock %}
+{% endblock %} {% endcomment %}
 
 {% block content %}
 
@@ -39,7 +40,15 @@
     <h5>Updated:{{ story.change_date }}</h5>            
     <div id="story-content">
         {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
-        <img src="{% static '/news/images/' %}{{ story.image_url }}">
+        {% comment %} <img src="{% static '/news/images/' %}{{ story.image_url }}"> {% endcomment %}
+
+        {% if story.image_url %}
+        {% comment %} <img src="../static/news/images/placeholder-{{ position }}.jpg"> {% endcomment %}
+        <img src="{{ story.image_url }}">  
+            {% comment %} <img src="{% static '/news/images/' %}{{ story.image_url }}">         {% endcomment %}
+        {% else %}
+            <img src="https://picsum.photos/600">
+        {% endif %}        
         {{ story.content|linebreaks }}
     </div>
 </div>
