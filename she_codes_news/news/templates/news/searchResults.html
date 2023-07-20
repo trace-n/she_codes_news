@@ -16,7 +16,9 @@
             {% include "./storyCard.html" with story=story %}
         {% endfor %}
     {% else %}
+    <div class="form-simple">
         <p>No search results are available.</p>
+    </div>
     {% endif %}
 </div>
 

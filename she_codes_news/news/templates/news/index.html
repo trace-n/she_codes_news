@@ -8,34 +8,34 @@
 
 
     {% block content %}
-
+    <div class="header-block">
     <div id="headline">
-        <a id="header-link" href="{% url 'news:index' %}">
             <h1>She {Codes} News</h1>
-        </a>
     </div>    
+    <div id="news-categories">
+        <h4> 
+            <ul class="category-list">
+            {% for category, value in category_choices %}
+            <li> <a href="{% url 'news:searchresults' %}?category={{category}}" class="category-link">{{ category }}</a> </li>
+            {% endfor %}
+            </ul>
+        </h4>
+    </div>    
+    </div>  
     {% if request.user.is_authenticated %}
     <div id="welcome">
         <div id="name">
         <h4>Welcome back {{ user.first_name }}</h4>
         </div>
         <div id="story-add">
-            <a href="{% url 'news:newStory' %}" class="button-simple"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icons">
+            <a href="{% url 'news:newStory' %}" class="register"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icons">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg> New Story</a> 
         </div>
     </div>       
     {% endif  %}
     <br>
-    <div id="news-categories">
-        <h4> 
-            <ul class="category-list">
-            {% for category, value in category_choices %}
-            <li>| <a href="{% url 'news:searchresults' %}?category={{category}}">{{ category }}</a> </li>
-            {% endfor %}
-            </ul>
-        </h4>
-    </div>
+
     <h2>Latest News</h2>
     <div id="all-content">
         <div id="latest-stories">
@@ -50,7 +50,6 @@
                 <p>No stories are available.</p>
             {% endif %}
         </div>
-
         <div id="all-stories">
             {% if all_stories %}
                 {% for story in all_stories %}

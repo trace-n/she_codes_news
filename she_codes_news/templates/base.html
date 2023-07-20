@@ -20,7 +20,9 @@
     <body>
         <header>
             <div id="header-text">
+                <a id="header-link" href="{% url 'news:index' %}">
                 <img src="{% static 'news/images/she_codes_sml.png' %}" alt="she_codes" width="120px" height="120px" > 
+                </a>
                 <!-- include nav here -->
                 {% include './nav.html' %}
              </div>
@@ -28,6 +30,7 @@
         <!-- content blocks here -->
         {% block content %}{% endblock %}
     </body>
+    <br>
     <footer>
     <div class="footer">
         <ul class="contact-link"> 

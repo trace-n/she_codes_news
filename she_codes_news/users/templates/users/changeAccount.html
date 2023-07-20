@@ -3,10 +3,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="form-simple">
     <h2>Account Details</h2>
     <form method="post">
         {% csrf_token %} 
         {{ form.as_p }}
-        <button type="submit">Update</button>
+        <button type="submit" class="register">Update</button>
     </form>
+</div>
 {% endblock %}

@@ -3,12 +3,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="form-simple">
 <h2>Login</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit" class="register">Login</button>
 </form>
-
-Don't have an account? <a href="{% url 'users:createAccount' %}">Sign up</a>.
+<br>
+Don't have an account? 
+<br>
+<br>
+<a href="{% url 'users:createAccount' %}" class="register">Sign up</a>
+</div>
 {% endblock %}
