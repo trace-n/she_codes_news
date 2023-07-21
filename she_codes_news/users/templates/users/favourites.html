@@ -7,10 +7,11 @@
 
 
 {% block content %}
-<div id="fav-stories">
+<div id="fav-stories" class="form-simple">
     <br>
 <h2>Favourite News</h2>
-<h3>View or remove your favourite news items you have added</h3>
+{% if request.user.is_authenticated %}        
+<h4>View or remove your favourite news items you have added</h4>
 
     {% if fav_stories %}
         {% comment %} {% for story in fav_stories %} {% endcomment %}
@@ -23,6 +24,11 @@
     {% else %}
         <h4>No stories are available.</h4>
     {% endif %} 
+{% else %}
+    <h2>You are not logged in</h2>
+    <h4 class="centre-align">Please <a href="{% url 'login' %}" class="register-wide">login</a> or <a href="{% url 'users:createAccount' %}" class="register-wide">sign up</a> to edit content</h4>
+
+{% endif %}    
 </div>
 
 

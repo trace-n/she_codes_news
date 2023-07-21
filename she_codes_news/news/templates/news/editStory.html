@@ -7,7 +7,7 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="register" value="Update">
+        <input type="submit" class="register" value="Save">
     </form>
     {% else %}
     <h2>You are not logged in</h2>

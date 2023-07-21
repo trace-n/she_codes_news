@@ -1,17 +1,16 @@
 /* Base HTML Styles */
 
+
 .story-card {
     margin: 2px;
-    border: 1px solid #000;
-    /* border: none; */
     padding: 5px;
-    
 }
 
 .story-card img {
     width: 100%;
     height: 300px;
     object-fit: cover;
+    border-radius: 3px;
 }
 
 #latest-stories {
@@ -21,6 +20,7 @@
     gap: 1px 1px;
     grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
     max-height: 500px;     
+    border-style: solid;
 }
 
 #story-card-1 {
@@ -43,9 +43,15 @@
 #story-card-3 a,
 #story-card-4 a {
     display: flex;
-    max-height: 120px;
-    width: 100%;
-    height: 100%;
+    max-height: 100px;
+}
+
+#story-card-2 .story-card-text .story-card-icons a,
+#story-card-3 .story-card-text .story-card-icons,
+#story-card-4 .story-card-text .story-card-icons {
+    /* display: flex;
+    flex-direction: column;
+    border: solid; */
 }
 
 #story-card-2 .story-card-text h3,
@@ -64,8 +70,17 @@
 #story-card-3 img,
 #story-card-4 img {
     width: 33%;
-    height: 100%;
+    height: 80%;
     margin-right: 5px;
+}
+
+/* .story-card-icons {
+    /* display: flex;
+    flex-direction: row; */
+} */
+
+.story-card p {
+    font-size: 12px;
 }
 
 #all-stories {
@@ -97,28 +112,7 @@
     margin: auto;
 }
 
-.story-card svg {
-    width: 20px;
-    height: 20px;
+#story-wrapper {
+    width: 80%;
+    margin: auto;
 }
-
-#story-wrapper svg {
-    width: 20px;
-    height: 20px;
-}
-
-
-svg {
-    width: 20px;
-    height: 20px;
-}
-
-/* .mini_img {
-    width: 2px;
-    height: 2px;
-}
-
-.story-card-text svg {
-    width: 1px;
-    height: 1px;
-} */

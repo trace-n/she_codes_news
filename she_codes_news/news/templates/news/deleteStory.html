@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+<br>
+<h2>Delete Story</h2>
 <div class="form-simple">
     {% if request.user.is_authenticated %}
 
-    <form action="" method="post">
+    <form action="" method="post" class="form-simple">
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ object.title }}"?</p>
         {{ form.as_p }}
         <input type="submit" class="register" value="Confirm">
     </form>
     {% else %}
+
         <h2>You are not logged in</h2>
-        <h4>Please <a href="{% url 'login' %}" class="register" >login</a> or <a href="{% url 'users:createAccount' %}" class="register" >sign up</a> to edit content</h4>
+        
+        <p>Please <a href="{% url 'login' %}" class="register" >login</a> or <a href="{% url 'users:createAccount' %}" class="register">sign up</a> to edit content</p>
 
     {% endif %}
 </div>    

@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="form-simple">
+<div class="form-simple-centre">
 <h2>Login</h2>
 <form method="post">
     {% csrf_token %}
@@ -14,6 +14,6 @@
 Don't have an account? 
 <br>
 <br>
-<a href="{% url 'users:createAccount' %}" class="register">Sign up</a>
+<p><a href="{% url 'users:createAccount' %}" class="register-wide">Sign up</a></p>
 </div>
 {% endblock %}

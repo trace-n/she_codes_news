@@ -7,9 +7,9 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views import generic
 from .models import CustomUser
 from news.models import NewsStory
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm #, CustomUserChangePasswordForm
 
-class DisplayAccountView(generic.ListView):
+class DisplayAccountView(generic.ListView): 
     model = CustomUser
     success_url = reverse_lazy('news:index')
     template_name = 'users/viewAccount.html'
@@ -31,6 +31,17 @@ class ChangeAccountView(UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
     
+# class ChangePasswordView(UpdateView):
+#     model = CustomUser
+#     form_class = CustomUserChangePasswordForm
+#     # slug_url_kwarg = "username"
+#     # slug_field = "username"    
+#     success_url = reverse_lazy('news:index')
+#     template_name = 'users/changePassword.html'
+
+#     def get_object(self, queryset=None):
+#         return self.request.user
+
 class AddFavView(CreateView):
     model = NewsStory
     template_name = 'news/favouriteStory.html'
@@ -51,3 +62,4 @@ class FavouriteView(generic.ListView):
     context_object_name = 'favourites'
     # new = NewsStory.favourites.filter(id=request.user)
     # return render(request,'favourites/html', { 'new': new })
+

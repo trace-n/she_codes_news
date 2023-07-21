@@ -5,10 +5,21 @@
 {% block content %}
 <div class="form-simple">
     <h2>Account Details</h2>
+    {% if request.user.is_authenticated %}
     <form method="post">
         {% csrf_token %} 
         {{ form.as_p }}
-        <button type="submit" class="register">Update</button>
+        <button type="submit" class="register">Save</button>
     </form>
+    <br>
+    <p>Need to change your password? <a href="{% url 'users:change-password' %}" class="sign-up">Password Change</a></p>
+
+    {% else %}
+    <h2>You are not logged in</h2>
+    <h4>Please <a href="{% url 'login' %}" class="register">login</a> or <a href="{% url 'users:createAccount' %}" class="register">sign up</a> to edit content</h4>
+
+    {% endif %}
+
 </div>
+
 {% endblock %}
