@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     
-    favourites = models.ManyToManyField('news.NewsStory') #, related_name='favourite', default=None, blank=True)
+    favourites = models.ManyToManyField('news.NewsStory', related_name='favourited_by', default=None, blank=True)
 
     def __str__(self):
         return self.username

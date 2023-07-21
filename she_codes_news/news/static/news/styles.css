@@ -20,7 +20,7 @@
     gap: 1px 1px;
     grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
     max-height: 500px;     
-    border-style: solid;
+    /* border-style: solid; */
 }
 
 #story-card-1 {
@@ -74,11 +74,6 @@
     margin-right: 5px;
 }
 
-/* .story-card-icons {
-    /* display: flex;
-    flex-direction: row; */
-} */
-
 .story-card p {
     font-size: 12px;
 }
@@ -107,7 +102,7 @@
 
 #all-content {
     display: block;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     width: 70%;
     margin: auto;
 }

@@ -1,9 +1,11 @@
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
 from django.db.models import Q
 # from django.views.generic.edit import DeleteView
+# from http import 
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -32,13 +34,25 @@ class CategoryView(generic.ListView):
         '''Return all news stories.'''
         # print(NewsStory.objects.get().category)
         # print(NewsStory.objects.filter(category=NewsStory.get().category))
-        print(NewsStory.objects.filter(category=category))
+        # print(NewsStory.objects.filter(category=category))
         return NewsStory.objects.filter(category=category)
 
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
+    print("hello test")
+    # story = get_object_or_404(NewsStory.object.get(pk=pk))
+    # print("hello fav", story.favourited_by.filter(id=story.author).exists())
+    def single_story(request, pk):
+        story = get_object_or_404(NewsStory.objects.get(pk=pk))
+        fav = bool
+        
+        # print("hello fav", story.favourited_by.filter(id=request.user.id).exists())
+        if story.favourited_by.filter(id=request.user.id).exists():
+            fav = True
+
+        return render(request,'news/story.html', { 'fav': fav })  
 
 class AddStoryView(generic.CreateView):
     form_class = StoryForm

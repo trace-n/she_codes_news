@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+ 
 # Create your views here.
 
 from django.urls import reverse_lazy
@@ -8,6 +8,7 @@ from django.views import generic
 from .models import CustomUser
 from news.models import NewsStory
 from .forms import CustomUserCreationForm, CustomUserChangeForm #, CustomUserChangePasswordForm
+from django.http import HttpResponseRedirect
 
 class DisplayAccountView(generic.ListView): 
     model = CustomUser
@@ -42,24 +43,32 @@ class ChangeAccountView(UpdateView):
 #     def get_object(self, queryset=None):
 #         return self.request.user
 
-class AddFavView(CreateView):
-    model = NewsStory
-    template_name = 'news/favouriteStory.html'
-    context_object_name = 'fav_stories'
-    # news = get_object_or_404(NewsStory, id=id)
-    # author = request.user
-    # remove or add favourites for user
-    # if NewsStory.favourites.filter(id=self.request.user).exists(): 
-    #     NewsStory.favourites.remove(self.request.user)
-    # else: 
-    #     NewsStory.favourites.remove(self.request.user)
 
-    success_url = reverse_lazy('news:index')    
+def AddFavouriteView(request, pk):
+    # model = NewsStory
+    # template_name = 'favourites.html'
+    # context_object_name = 'fav_stories'
+    # check if news story id exist 
+    user_fav = get_object_or_404(CustomUser, id=request.user.id)
+    
+    # check if user exists wtih favourite 
+    if user_fav.favourites.filter(id=pk).exists(): 
+        user_fav.favourites.remove(pk)
+    else: 
+        user_fav.favourites.add(pk)
+    # 
+    # success_url = reverse_lazy('news:index')            
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-class FavouriteView(generic.ListView):
-    model = CustomUser
-    template_name = 'users/favourites.html'
-    context_object_name = 'favourites'
-    # new = NewsStory.favourites.filter(id=request.user)
-    # return render(request,'favourites/html', { 'new': new })
+
+
+
+def FavouriteView(request):
+    # template_name = 'users/favourites.html'
+    # context_object_name = 'favourites'
+    # user_fav = get_object_or_404(CustomUser, id=request.user.id)    
+    # new = user_fav.favourites.filter(author_id=request.user) 
+    new = NewsStory.objects.filter(favourited_by=request.user)
+
+    return render(request,'users/favourites.html', { 'fav_stories': new })
 

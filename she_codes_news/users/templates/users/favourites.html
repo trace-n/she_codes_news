@@ -15,11 +15,10 @@
 
     {% if fav_stories %}
         {% comment %} {% for story in fav_stories %} {% endcomment %}
-        {% for story in all_stories %}        
+        {% for story in fav_stories %}        
             <!-- <p>{{ story.title }}</p> -->
-            {% include "./storyCard.html" with story=story %}
-            <p>Test output variable latest_stories{{ story }}</p>
-            <a href="{% url 'users:favAdd' NewsStory.id %}">Remove</a>
+            {% include "news/storyCard.html" with story=story %}
+            <a href="{% url 'users:favouriteAdd' story.id %}">Remove</a>
         {% endfor %}
     {% else %}
         <h4>No stories are available.</h4>

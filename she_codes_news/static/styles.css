@@ -326,7 +326,7 @@ ul {
 }
 
 #story-add {
-    background-color: var(--hover-blue);
+    /* background-color: var(--hover-blue); */
     border-radius: 4px;
     align-items: center;
 }
@@ -351,11 +351,32 @@ ul {
     transition: all 1s ease;
 }
 
-#story-add a:hover {
+#story-add:hover {
     background-color: rgba(255, 255, 255, 0.6);
     color: var(--black);
 }
 
+.register-wide-new {
+    margin-right: 8px;
+    /* background-color: #1691db; */
+    color: var(--white);
+    border: 1px solid var(--hover-blue);
+    background-color:rgb(130, 70, 175,0.8); 
+    border-radius: 4px;
+    padding: 4px 16px 4px 16px;
+    text-align: center;
+}
+
+.register-wide-new:hover {
+    background-color:rgb(130, 70, 175,0.6); 
+    color: var(--white);
+    /* height: 100%;
+    width: 100%; */
+}
+
+.register-wide-new svg {
+    /* position: initial; */
+}
 
 /* this is from news/styles.css as issues with 2 stylesheets being called */
 
