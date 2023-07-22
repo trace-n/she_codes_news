@@ -10,7 +10,8 @@ from news.models import NewsStory
 from .forms import CustomUserCreationForm, CustomUserChangeForm #, CustomUserChangePasswordForm
 from django.http import HttpResponseRedirect
 
-class DisplayAccountView(generic.ListView): 
+# class DisplayAccountView(generic.ListView): 
+class DisplayAccountView(generic.DetailView):
     model = CustomUser
     success_url = reverse_lazy('news:index')
     template_name = 'users/viewAccount.html'
@@ -45,10 +46,7 @@ class ChangeAccountView(UpdateView):
 
 
 def AddFavouriteView(request, pk):
-    # model = NewsStory
-    # template_name = 'favourites.html'
-    # context_object_name = 'fav_stories'
-    # check if news story id exist 
+    # allow user to favourite/unfavourite individual story 
     user_fav = get_object_or_404(CustomUser, id=request.user.id)
     
     # check if user exists wtih favourite 
@@ -56,18 +54,15 @@ def AddFavouriteView(request, pk):
         user_fav.favourites.remove(pk)
     else: 
         user_fav.favourites.add(pk)
-    # 
-    # success_url = reverse_lazy('news:index')            
+              
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 
 
 def FavouriteView(request):
-    # template_name = 'users/favourites.html'
-    # context_object_name = 'favourites'
-    # user_fav = get_object_or_404(CustomUser, id=request.user.id)    
-    # new = user_fav.favourites.filter(author_id=request.user) 
+    # show a list of favourite stories for user account'
+ 
     new = NewsStory.objects.filter(favourited_by=request.user)
 
     return render(request,'users/favourites.html', { 'fav_stories': new })
