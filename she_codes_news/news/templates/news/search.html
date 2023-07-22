@@ -8,13 +8,26 @@
 {% block content %} 
 <br>
 <h2>Search News</h2>
+
+<div class="form-simple">
 <h3>Search Articles by author or category</h3>
 
-<form action="{% url 'news:searchresults' %}" method="get">
-    <input name="q" type="text" placeholder="Search Author or Category...">
+{% comment %} <form action="{% url 'news:searchresults' %}" method="get"> {% endcomment %}
+    {% comment %} <input name="q" type="text" placeholder="Search Author or Category..."> {% endcomment %}
     {% comment %} <input name="category" type="text" placeholder="Search Author or Category...">
     <input name="author" type="text" placeholder="Search Author or Category...">
     <input name="category" type="text" placeholder="Search Author or Category..."> {% endcomment %}
-</form>
+{% comment %} </form> {% endcomment %}
+
+    <form action="{% url 'news:searchresults' %}" method="get" id="search">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icons">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+      </svg>         
+      <input name="author" type="text" placeholder="Search Author...">
+      <input name="category" type="text" placeholder="Search Category...">
+      <input type="submit" value="Search" class="register">
+  </form>
+</div>
+  
 
 {% endblock %}

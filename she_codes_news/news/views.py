@@ -31,10 +31,6 @@ class CategoryView(generic.ListView):
     context_object_name = 'story_categories'
 
     def get_queryset(self, category):
-        '''Return all news stories.'''
-        # print(NewsStory.objects.get().category)
-        # print(NewsStory.objects.filter(category=NewsStory.get().category))
-        # print(NewsStory.objects.filter(category=category))
         return NewsStory.objects.filter(category=category)
 
 class StoryView(generic.DetailView):
