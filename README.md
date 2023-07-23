@@ -97,7 +97,7 @@ There are 3 database tables:
 
 - [X] "Account view" page
     - User can view account details
-    - User can edit account from "V"iew Account" page
+    - User can edit account from "View Account" page
     -   User can change password from the "Edit Account" page
         - User will be sent to password change completed page after password change
 
@@ -108,13 +108,13 @@ There are 3 database tables:
 
 - [X] "Create Account" page
     - User can click on "Sign Up" from nav bar to create account 
-    - User is taken to login page after account created
+    - User is taken to "Login" page after account created
 
     ![ Create Account ]( ./images/Create_account.png "Create account")        
 
 - [X] View stories by author
     - Separate search field for author from category search to enable reuse of specific category search
-    - Search will return a search results page
+    - Search will return a "Search Results" page
     - Search results will search either first or last name of author based on icontains filter
     - Search results will search in addition to author first/last name with category if entered
     - Search results will search only category if no author entered based on icontains filter
@@ -127,8 +127,7 @@ There are 3 database tables:
     ![ News categories search category ]( ./images/search_cat.png "News categories search category")           
     ![ News categories search no results ]( ./images/Search_no_results.png "News categories no search results")    
 
-- [X] "Log-in" button only visible when no user is logged in/"Log-out" 
-    - Button only visible when a user *is* logged in
+- [X] "Log-in" button only visible when no user is logged in/"Log-out" button only visible when a user *is* logged in
 
     ![ Nav bar not logged in  ]( ./images/Nav_bar.png "Login button")
     ![ Nav bar logged in ]( ./images/nav_bar_logged_in.png "Signout  button")    
@@ -165,9 +164,9 @@ There are 3 database tables:
     ![ Delete story ]( ./images/Delete_story.png "Delete story")
 
 - [X] Add the ability to “favourite” stories and see a page with your favourite stories.
-    - When user is logged in, user can favourite/ unfavourite story from a single story detail view from heart icon
-    - User can navigate to favourites page to view all favourites and remove favourites
-    - Favourites icon is also displayed, outline heart icon or solid heart icon, depending if user has favourited story     
+    - When user is logged in, user can favourite/ unfavourite story from a single story detail view by clicking the heart icon
+    - Favourites icon will be displayed as outline heart icon or solid heart icon, depending if user has favourited story 
+    - From navigation bar, heart icon allows user to go to "Favourite News" page to view all favourites and remove favourites
 
     ![ Favourite story ]( ./images/favourite_story.png "Favourite story")
     ![ Unfavourite story ]( ./images/unfavourite_story.png "Unfavourite story")
