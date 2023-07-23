@@ -88,7 +88,7 @@ There are 3 database tables:
 
 - [X] Log-in/log-out
     - Login page for user to enter username and password
-    - User can also Sign up if they do not have a login account
+    - User can also "Sign up" if they do not have a login account
     - User is taken back to news homepage with updated nav bar
     - User can sign out from nav bar from sign out icon and is taken back to news homepage
 
@@ -96,8 +96,9 @@ There are 3 database tables:
     ![ Log out  ]( ./images/Nav_bar_logged_in_new_story.png "Signout")    
 
 - [X] "Account view" page
-    - User can edit account from this page
-    -   User can change password from the edit account page
+    - User can view account details
+    - User can edit account from "V"iew Account" page
+    -   User can change password from the "Edit Account" page
         - User will be sent to password change completed page after password change
 
     ![ View Account ]( ./images/Account_view.png "View account")    
@@ -106,17 +107,18 @@ There are 3 database tables:
     ![ Change Password Done ]( ./images/password_done.png "Change password done")    
 
 - [X] "Create Account" page
-    - User can click on Sign Up from nav bar to create account 
-    - User is taken to login screen after account created
+    - User can click on "Sign Up" from nav bar to create account 
+    - User is taken to login page after account created
 
     ![ Create Account ]( ./images/Create_account.png "Create account")        
 
 - [X] View stories by author
     - Separate search field for author from category search to enable reuse of specific category search
+    - Search will return a search results page
     - Search results will search either first or last name of author based on icontains filter
     - Search results will search in addition to author first/last name with category if entered
     - Search results will search only category if no author entered based on icontains filter
-    - Search will display no results available if no match found on criteria entered
+    - Search results will display no results available if no match found on criteria entered
     - No login required for search functionality
 
     ![ News categories search ]( ./images/Search_auth_cat.png "News categories search")    
@@ -125,13 +127,14 @@ There are 3 database tables:
     ![ News categories search category ]( ./images/search_cat.png "News categories search category")           
     ![ News categories search no results ]( ./images/Search_no_results.png "News categories no search results")    
 
-- [X] "Log-in" button only visible when no user is logged in/"Log-out" buttononly visible when a user *is* logged in
+- [X] "Log-in" button only visible when no user is logged in/"Log-out" 
+    - Button only visible when a user *is* logged in
 
     ![ Nav bar not logged in  ]( ./images/Nav_bar.png "Login button")
     ![ Nav bar logged in ]( ./images/nav_bar_logged_in.png "Signout  button")    
 
 - [X] "Create Story" functionality only available when user is logged in
-    - Add New Story button is only displayed after user is logged in under the news category header section of the news homepage
+    - "Add New Story" button is only displayed after user is logged in under the news category header section of the news homepage
 
     ![ Create story logged in  ]( ./images/Nav_bar_logged_in_new_story.png "Create story button")   
     ![ Create story ]( ./images/New_story.png "Create story")        
@@ -146,15 +149,16 @@ There are 3 database tables:
 
     ![ News categories for create story ]( ./images/new_story_cat.png "News category")    
     ![ News categories and search stories by categories ]( ./images/Nav_bar.png "Search option in navigation bar - News categories under header")
+    ![ News categories selection from category bar under header ]( ./images/Search_entertainment_category.png "News categories Entertainment")
     ![ Search by category via search bar ]( ./images/Search_category_nav_bar.png "Search by category")
     ![ Search by category results displayed]( ./images/Search_results_cat_nav_bar.png "Search by category results displayed")    
-    ![ News categories selection from category bar under header ]( ./images/Search_entertainment_category.png "News categories Entertainment")
     ![ News categories search no results ]( ./images/Search_no_results.png "News categories no search results")    
 
 - [X] Add the ability to update and delete stories (consider permissions - who should be allowed to update or and/or delete stories).
     - A user can update/ delete a story if they are the author of the story
     - A superuser/ admin can also update/ delete a story of another user
-    - From the single story page, option appears to edit/ delete story via the pencil icon tod edit story and bin icon to delete story
+    - From the single story page, option appears to edit/ delete story via the pencil icon to edit story and bin icon to delete story
+    - Favourites icon is also displayed, outline heart icon or solid heart icon, depending if user has favourited story 
 
     ![ Single story options for authenticated user ]( ./images/single_story_user_auth_options.png "Story options for authenticated user")
     ![ Edit story ]( ./images/user_edit_story.png "Edit story")
@@ -163,6 +167,7 @@ There are 3 database tables:
 - [X] Add the ability to “favourite” stories and see a page with your favourite stories.
     - When user is logged in, user can favourite/ unfavourite story from a single story detail view from heart icon
     - User can navigate to favourites page to view all favourites and remove favourites
+    - Favourites icon is also displayed, outline heart icon or solid heart icon, depending if user has favourited story     
 
     ![ Favourite story ]( ./images/favourite_story.png "Favourite story")
     ![ Unfavourite story ]( ./images/unfavourite_story.png "Unfavourite story")
@@ -171,6 +176,7 @@ There are 3 database tables:
 - [X] Our form for creating stories requires you to add the publication date,update this to automatically save the publication date as the day the story was first published (maybe you could then add a field to show when the story was updated).
     - Publication date is saved automatically on creation of new story
     - Changed date is saved automatically when a story is updated
+    - These fields are not displayed on "New Story" creation or on "Edit Story" as they are automatically updated
 
     ![ Publication and change date of story ]( ./images/Publication_updated_date.png "Story publication/change date")
 
