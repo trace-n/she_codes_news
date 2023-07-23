@@ -7,10 +7,10 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views import generic
 from .models import CustomUser
 from news.models import NewsStory
-from .forms import CustomUserCreationForm, CustomUserChangeForm #, CustomUserChangePasswordForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm 
 from django.http import HttpResponseRedirect
 
-# class DisplayAccountView(generic.ListView): 
+
 class DisplayAccountView(generic.DetailView):
     model = CustomUser
     success_url = reverse_lazy('news:index')
@@ -33,16 +33,7 @@ class ChangeAccountView(UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
     
-# class ChangePasswordView(UpdateView):
-#     model = CustomUser
-#     form_class = CustomUserChangePasswordForm
-#     # slug_url_kwarg = "username"
-#     # slug_field = "username"    
-#     success_url = reverse_lazy('news:index')
-#     template_name = 'users/changePassword.html'
 
-#     def get_object(self, queryset=None):
-#         return self.request.user
 
 
 def AddFavouriteView(request, pk):

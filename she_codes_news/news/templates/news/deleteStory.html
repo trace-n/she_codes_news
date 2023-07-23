@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<br>
+
 <h2>Delete Story</h2>
 <div class="form-simple">
     {% if request.user.is_authenticated %}
 
     <form action="" method="post" class="form-simple">
         {% csrf_token %}
-        <p>Are you sure you want to delete "{{ object.title }}"?</p>
+        <p class="centre-align">Are you sure you want to delete "{{ object.title }}"?</p>
         {{ form.as_p }}
-        <input type="submit" class="register" value="Confirm">
+        <p class="centre-align"><input type="submit" class="register" value="Confirm"></p>
     </form>
     {% else %}
 

@@ -12,7 +12,6 @@ urlpatterns = [
     path('search-results/', views.SearchResultsView.as_view(), name='searchresults'),
     path('search/', views.SearchView.as_view(), name='search'),
     path('<str:category>', views.CategoryView.as_view(), name='category'),    
-
-    # path('', views.CategoryView.as_view(), name='category'),          
+   
 ]
 

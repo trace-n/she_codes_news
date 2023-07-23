@@ -45,29 +45,14 @@ class StoryView(generic.DetailView):
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
         print(context)
-        # story = get_object_or_404(NewsStory.objects.get(pk=pk))
         fav = bool
-        
-        # print("hello fav", story.favourited_by.filter(id=request.user.id).exists())
+
         if context['story'].favourited_by.filter(id=request.user.id).exists():
             context['favourites'] = True
 
         return self.render_to_response(context)
 
-        # return render(request,'news/story.html', { 'fav': fav })  
-
-        # return self.render_to_response(context)
     
-
-    # def single_story(request, pk):
-    #     story = get_object_or_404(NewsStory.objects.get(pk=pk))
-    #     fav = bool
-        
-    #     # print("hello fav", story.favourited_by.filter(id=request.user.id).exists())
-    #     if story.favourited_by.filter(id=request.user.id).exists():
-    #         fav = True
-
-    #     return render(request,'news/story.html', { 'fav': fav })  
 
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
@@ -113,13 +98,12 @@ class SearchResultsView(generic.ListView):
         print(query_author, query_category)
         if query_author is None or query_author == "":
             result_set = NewsStory.objects.filter(Q(category__icontains=query_category))
-        # query = self.request.GET.get("q")
+
         elif query_category is None or query_category == "": 
             result_set = NewsStory.objects.filter(Q(author__last_name__icontains=query_author) | Q(author__first_name__icontains=query_author))
         else:                                      
             result_set = NewsStory.objects.filter((Q(author__last_name__icontains=query_author) | Q(author__first_name__icontains=query_author)) 
                                         & Q(category__icontains=query_category))
-
         
         # return NewsStory.objects.filter(Q(author__last_name__icontains=query_author) | Q(author__first_name__icontains=query_author) 
                                         # | Q(category__icontains=query_category))
